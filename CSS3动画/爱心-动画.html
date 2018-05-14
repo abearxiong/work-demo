@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .love{
+            display: block;
+            position: relative;
+            width: 126px;
+            height: 155px;
+            top: 149px;
+            left: 291px;
+            background-image: url(page7-2.png);
+            animation: bg 1s steps(5) 1 both ; /*动画时间函数steps，将动画对象分割成5个部分*/
+        }
+        .txt{
+            display: block;
+            position: relative;
+            width: 299px;
+            height: 81px;
+            top: 349px;
+            left: 291px;
+            background-image: url(page9-1.png);
+            animation: bg 1s steps(15) 1s 1 both ;
+        }
+        .line{
+            display: block;
+            position: relative;
+            width: 0px;
+            height: 8px;
+            top: 365px;
+            left: 291px;
+            background-image: url(page11-3.png);
+            animation: lineWidth 1s ease 2s 1 both ;
+        }
+        .img{
+            display: block;
+            position: relative;
+            width: 251px;
+            height: 0px;
+            top: 449px;
+            left: 291px;
+            background-image: url(143581915754622.png);
+            animation: wordHight 1s ease-in 3s 1 both ;
+        }
+        @keyframes bg {
+            0%{
+                background-position: 0 0;
+            }
+            100%{
+                background-position: 100% 0;
+            }
+        }
+        @keyframes wordHight  {
+            from{
+                height: 0px;
+            }
+            to{
+                height: 426px;
+            }
+        }
+        @keyframes lineWidth {
+            0%{
+                width:0;
+            }
+            100%{
+                width: 333px;
+            }
+        }
+
+
+
+
+    </style>
+</head>
+<body style="background: #000">
+    <i class="love"></i>
+
+    <i class="txt"></i>
+    <i class="line"></i>
+    <i class="img"></i>
+</body>
+</html>

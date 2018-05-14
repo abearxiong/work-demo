@@ -1,0 +1,232 @@
+<!--导航栏CSS-->
+<style>
+	ul{
+		padding: 0;
+		margin: 0;
+	}
+	/*顶部入口栏*/
+	.ent-container{
+		background: #ddd;
+	}
+	.ent{
+		height:50px;
+		line-height: 50px;
+		padding-right: 35px;
+	}
+	.ent>ul>li>a{
+		color:#f00;
+	}
+	/*-- nav导航条 --*/
+	.logo>h1{
+		margin-left: 16px;
+		margin-top:10px;
+		margin-bottom: 0;
+	}
+	.navbar-default {
+		background-color: rgba(6,6,6,.6);
+		border: none;
+	}
+	.navbar-collapse{
+		padding:0;
+	}
+	.navbar-nav {
+		float: right;
+		margin-top: 12px;
+	}
+	.navbar-nav > li > a {
+		padding: 0 12px 12px;
+	}
+	.navbar-brand{
+		padding:0;
+		line-height: normal;
+		height: inherit;
+	}
+	.navbar {
+		min-height: 50px;
+		margin-bottom: 0;
+	}
+	a.navbar-brand {
+		font-size: 2.5rem;
+		color: #fff !important;
+		letter-spacing: 2px;
+	}
+	a.navbar-brand span {
+		color: #CB9D2D;
+		background: #fff;
+		padding: 0 9px;
+	}
+
+	.navbar-default .navbar-nav > li > a {
+		font-size: 16px;
+		color: #fff;
+		margin: 0;
+		margin-bottom: 6px;
+		font-weight:600;
+	}
+	.navbar-default .navbar-nav > li > a.active {
+		color: #CB9D2D;
+	}
+	.navbar-nav > li {
+		margin: 0 12px;
+	}
+	a.navbar-brand i {
+		font-style: normal;
+		margin: 0 4px;
+	}
+	@media (max-width: 736px){
+		.navbar-default .navbar-toggle {
+			border-color: #CB9D2D;
+		}
+		.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+			background-color: #CB9D2D;
+		}
+		.navbar-default .navbar-toggle .icon-bar {
+			background-color: #FFF;
+		}
+		.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+			border-top: 1px solid #CB9D2D;
+			box-shadow: none;
+		}
+		.navbar-nav {
+			float: none;
+			margin-top: 12px;
+			width: 100%;
+			text-align: center;
+		}
+		.navbar-nav > li {
+			margin: 10px 0px;
+		}
+		.nav > li > a {
+			display: inline-block;
+		}
+	}
+	@media (max-width: 991px){
+		.navbar-nav > li {
+			margin: 0 7px;
+		}
+	}
+
+	/*修改boot导航条点击下拉菜单的样式*/
+	.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus{
+		background-color:#696969;
+		color:#fff;
+	}
+	.dropdown-menu{
+		text-align: center;
+		left:-35px;
+	}
+	@media  (max-width: 767px){
+		.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover{
+			color:#f00;
+		}
+		.navbar-default .navbar-nav .open .dropdown-menu > li > a{
+			color:#fff;
+		}
+	}
+	/*自定义的导航条鼠标移入下拉菜单*/
+	.about{
+		position:relative;
+	}
+	.sub_about{
+		display: none;
+		list-style: none;
+		position: absolute;
+		top:38px;
+		left:-35px;
+		width:140px;
+		background: #fff;
+		text-align: center;
+		border-bottom-left-radius: 5px;
+		border-bottom-right-radius: 5px;
+		box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+		z-index: 100;
+	}
+	.sub_about>li{
+		margin-bottom: 8px;
+	}
+	.sub_about>li>a{
+		display: inline-block;
+		width:100%;
+		color:#333;
+		padding:8px;
+	}
+	.sub_about>li>a:hover{
+		color:#fff;
+		background: rgba(81, 84, 47, 0.63);
+		font-weight: bold;
+	}
+
+	/* 导航条 菜单的下划线动画样式 */
+	.hvr-overline-from-left {
+		display: inline-block;
+		vertical-align: middle;
+		-webkit-transform: translateZ(0);
+		transform: translateZ(0);
+		box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+		-webkit-backface-visibility: hidden;
+		backface-visibility: hidden;
+		-moz-osx-font-smoothing: grayscale;
+		position: relative;
+		overflow: hidden;
+	}
+	.hvr-overline-from-left:before {
+		content: "";
+		position: absolute;
+		z-index: -1;
+		left: 0;
+		right: 100%;
+		bottom: 0;
+		background: #CB9D2D;
+		height: 3px;
+		-webkit-transition-property: right;
+		transition-property: right;
+		-webkit-transition-duration: 0.3s;
+		transition-duration: 0.3s;
+		-webkit-transition-timing-function: ease-out;
+		transition-timing-function: ease-out;
+	}
+	.hvr-overline-from-left:hover:before,.hvr-overline-from-left:focus:before,.hvr-overline-from-left:active:before,.hvr-overline-from-left.hover:before{
+		right: 0;
+		color:#fff;
+	}
+	.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus,.navbar-default .navbar-nav > li > a.hover{
+		color: #CB9D2D;
+	}
+	.navbar-brand {
+		border: 1px solid #fff;
+	}
+	.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus{
+		color:#fff;
+		background-color: transparent;
+	}
+	.nav .open > a, .nav .open > a:hover, .nav .open > a:focus{
+		background-color: transparent;
+	}
+</style>
+<!-- js -->
+	<!--导航条JS-->
+<script>
+	jQuery(document).ready(function($) {
+//		console.log($(document).width());
+		function callBack() {
+//			console.log($(document).width());
+			if ($(window).width() > 768) {
+				$('.nav>li>ul').removeClass('dropdown-menu').addClass('sub_about');
+				$('.nav>li').hover(function (e) {
+							$(this).find('.sub_about').fadeIn();
+							$(this).find('a').addClass('hover').css('background-color', "");
+							$(this).find('.hvr-overline-from-left').addClass('hover');
+						}, function () {
+							$(this).find('.sub_about').fadeOut();
+							$(this).find('a').removeClass('hover');
+							$(this).find('.hvr-overline-from-left').removeClass('hover');
+						}
+				)
+			} else {
+				$('.nav>li>ul').css('display', "").addClass('dropdown-menu').removeClass('sub_about');
+			}
+		}
+		callBack();
+		$(window).resize(callBack);
+	})
+</script>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+ <a href="http://www.youku.com">优酷</a>
+	<div>
+		<b id='wait'>5</b>秒后自动<a id="a" href="https://www.baidu.com" target=_blank>跳转到百度</a>
+	</div>
+	<script type="text/javascript">
+		var wait=document.getElementById('wait');
+		var href=document.getElementById('a').getAttribute('href');
+		console.log(wait,href);
+		var abc=setInterval(function(){
+			 wait.innerHTML-=1;
+			console.log(123);
+			if(wait.innerHTML<=0){
+				location.href=href;
+				console.log(location.href);
+				clearInterval(abc);
+			}
+		},1000);
+	</script>
+ </body>
+</html>

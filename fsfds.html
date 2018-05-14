@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
+    <meta content="webkit" name="renderer">
+    <link rel="stylesheet" href="mui.min.css">
+    <title>赚佣金</title>
+    <style>
+        body{
+            font-size: 14px;
+            }
+            img{
+                width: 100%;
+            }
+            em,i{
+                font-style: normal;
+            }
+            p{
+                margin-bottom: 0;
+                color: #000;
+            }
+            .tx-record{
+                height: 55px;
+                margin-top: 10px;
+                line-height: 55px;
+                text-align: center;
+                background: #fff;
+                border-bottom: 1px solid #c8c7cc;
+            }
+            .tx-record .name{
+                padding: 0 15px 0 5px;
+            }
+            .mui-slider-indicator .mui-indicator{
+                width: 12px;
+                height: 12px;
+                background: rgba(255,255,255,.6);
+            }
+
+            .rank-page .mui-table-view-cell{
+                display: flex;
+                justify-content: space-between;
+            }
+            .rank-page .mui-table-view-cell.mui-active,.record-page .mui-table-view-cell.mui-active{
+                background: #fff;
+            }
+            .mui-table-view-cell .header-img{
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                border:1px solid #ddd;
+                vertical-align: middle;
+            }
+
+            .record-page .record-info{
+                display: flex;
+                padding: 10px 15px;
+                justify-content: space-between;
+                align-items: center;
+                background: #fff;
+            }
+            .record-page .record-info .detail{
+                font-size: 12px;
+            }
+            .record-page .record-info .detail span{
+                padding-right: 8px;
+            }
+            .record-page .record-list .record-item{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .record-page .record-list .record-item .user-wrap{
+                display: flex;
+                align-items: center;
+            }
+            .record-page .mui-table-view-cell .header-img{
+                width: 50px;
+                height: 50px;
+            }
+            .record-page .mui-table-view-cell .action-wrap{
+                line-height: 18px;
+                margin-left: 10px;
+            }
+            .record-page .record-list .record-item .in,.record-page .record-list .record-item .out{
+                font-weight: bold;
+                font-size: 16px;
+            }
+            .record-page .record-list{
+                margin-top: 5px;
+            }
+            .record-page .record-list:before{
+                height: 0;
+            }
+            .record-page .record-list .record-item .in{
+                color: #f00;
+            }
+            .screen-wrap{
+                padding: 10px 15px;
+                background: #fff;
+                border-top: 1px solid #ddd;
+            }
+            .screen-wrap .mui-badge{
+                width: 55px;
+                padding: 5px 6px;
+                margin-right: 10px;
+                background: transparent;
+                color: #888;
+            }
+            .screen-wrap .mui-badge:active{
+                background: transparent;
+            }
+            .screen-wrap .mui-badge.active{
+                background: #6060bd;
+                border-color: #6060bd;
+                color: #fff;
+            }
+
+            .focus-wrap{
+                padding: 100px 40px;
+                text-align: center;
+            }
+            .focus-wrap p{
+                font-size: 16px;
+                color: #000;
+            }
+
+            .comm-page .tips{
+                background: #f3e498;
+                color: #f00;
+                padding: 1px 10px;
+                margin-bottom: 0;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+            .comm-page .poster-wrap{
+                position: absolute;
+                top: 23px;
+                bottom: 60px;
+            }
+            .comm-page .poster-wrap img{
+                /*height: 100%;*/
+            }
+            .nav-bar{
+                display: flex;
+                position: fixed;
+                bottom:0;
+                width: 100%;
+                height: 60px;
+                text-align: center;
+            }
+            .nav-bar span{
+                display: block;
+            }
+            .nav-bar .change-bg{
+                flex: 3;
+                padding-top: 8px;
+                color: #484848;
+                background: #fff;
+            }
+            .nav-bar .shear{
+                flex: 1;
+                padding-top: 8px;
+                color: #fff;
+                background: #f1332a;
+            }
+            .tx-phone-wrap{
+                width: 85%;
+            }
+            .tx-phone-wrap .mui-popup-inner{
+                padding-bottom: 0;
+            }
+            .phone-wrap .mui-input-row{
+                padding: 5px;
+            }
+            .phone-wrap .mui-input-row:first-child{
+                border-bottom: 1px solid #ddd;
+            }
+            .phone-wrap .mui-input-row label{
+                width: auto;
+                padding: 13px 2px;
+            }
+            .phone-wrap .mui-input-row label ~ input{
+                float: left;
+                width: 43%;
+                padding-right: 0;
+                font-size: 14px;
+            }
+            .mui-input-row .mui-btn.get-code {
+                width: auto;
+                top: 50%;
+                transform: translateY(-50%);
+                padding: 8px 5px;
+                right: 0;
+                position: absolute;
+                font-size: 12px;
+            }
+            /*提示半透明弹窗*/
+            .mui-toast-container{
+                z-index: 99999;
+            }
+            .mui-toast-container{
+                bottom:40%;
+            }
+            .mui-toast-message{
+                background-color: rgba(0,0,0,0.8);
+                width: 180px;
+                border-radius: 5px;
+            }
+            .mui-toast-message .toast-content{
+                color: #fff;
+                width: 80%;
+                margin: 0 auto;
+                padding: 20px 0;
+            }
+            .mui-toast-message .toast-content>span{
+                color:#ff9501;
+                font-size: 14px;
+            }
+            .mui-toast-message .toast-content>p {
+                color: #fff;
+                font-size: 16px;
+                margin-top: 20px;
+            }
+
+
+            .yj-wrap{
+                position: relative;
+                text-align: center;
+                height: 150px;
+                background: #ff433a;
+                color: #fff;
+                font-size: 25px;
+            }
+            .yj-wrap .total-wrap{
+                line-height: 180px;
+            }
+            .yj-wrap .rank-btn{
+                position: absolute;
+                padding: 5px;
+                top: 10px;
+                right: 13px;
+                font-size: 14px;
+                color: #fff;
+            }
+            .balance-wrap{
+                height: 50px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: #fd564e;
+                font-size: 16px;
+                padding: 0 15px;
+                color: #fff;
+            }
+            .tx-btn{
+                border-radius: 100px;
+                background: transparent;
+                color: #fff;
+                border-color: #fff;
+                padding: 4px 18px;
+                font-size: 15px;
+            }
+            .link-wrap{
+                display: flex;
+                justify-content: space-around;
+                padding: 15px 0;
+                margin: 10px 0;
+                background: #fff;
+                border-bottom: 1px solid #c8c7cc;
+            }
+            .link-wrap a{
+                padding: 0 20px;
+                text-align: center;
+            }
+            .link-wrap a p{
+                margin-top: 5px;
+                font-size: 16px;
+            }
+            .link-wrap .iconfont{
+                font-size: 30px;
+                background: #0cccbc;
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+                line-height: 50px;
+                border-radius: 50%;
+                text-align: center;
+                color: #fff;
+            }
+            .link-wrap .iconfont.zhuang{
+                background: #ff9c1b;
+            }
+
+            .menu-list .mui-table-view-cell{
+                padding: 13px 15px;
+            }
+            .menu-list .mui-table-view-cell a{
+                font-size: 16px;
+            }
+            .menu-list .mui-navigate-right:after{
+                font-size: 24px;
+            }
+            .mui-table-view:before{
+                height: 0;
+            }
+            .mui-table-view-cell:after{
+                left: 0;
+            }
+
+
+
+            .popup-in{
+                -webkit-transition-duration: 400ms;
+                transition-duration: 400ms;
+                -webkit-transform: translate3d(-50%, -50%, 0) scale(1);
+                transform: translate3d(-50%, -50%, 0) scale(1);
+                opacity: 1;
+            }
+
+.uploading-wrap{
+    display: none;
+    text-align: center;
+    position: fixed;
+    top: 40%;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+.uploading-wrap .mui-spinner{
+    width: 40px;
+    height: 40px;
+}
+.empty-tips{
+    text-align: center;
+    padding: 20px;
+}
+
+    </style>
+</head>
+
+<body>
+   
+
+
+    <div class="mui-content comm-page">
+        <!-- <div class="focus-wrap" style="display: none">
+            <p>请先关注公众号哦！</p>
+            <img src="__ROOT__/themes/zhiya/Fanli/images/lb_02.jpg" alt="">
+        </div>
+
+        <div>
+            <p class="tips">tips:分享图片，别人识别二维码领取奖品后可得佣金</p>
+            <div class="poster-wrap">
+                <img src="{$t_c}" alt="">
+                <img src="返利网 (1).png" alt="">
+            </div>
+            <div class="nav-bar">
+                <a class="change-bg" href="#">
+                    <i class="mui-icon mui-icon-contact"></i>
+                    <span class="">换背景</span>
+                </a>
+                <a class="shear" href="#">
+                    <i class="mui-icon mui-icon-gear"></i>
+                    <span class="">分享赚佣金</span>
+                </a>
+            </div>
+       </div>  -->
+
+        <!-- <div class="uploading-wrap">
+            <span class="mui-spinner"></span>
+            <p>图片上传中……</p>
+        </div>
+        <span class="mui-btn">fsdfds</span>
+
+        <div class="mui-popup tx-phone-wrap" style="">
+            <div class="mui-popup-text">为后续更好地为您服务，请输入真实手机号</div>
+             <div class="mui-popup-inner">
+                <div class="phone-wrap">
+                    <div class="mui-input-row">
+                        <label>手机号：</label>
+                        <input id="phone" type="number" id="phone" class="phone-input" placeholder="输入手机号码">
+                        <button onclick="postphonecode()" type="button" class="mui-btn mui-btn-warning get-code">获取验证码</button>
+                    </div>
+                    <div class="mui-input-row">
+                        <label>验证码：</label>
+                        <input type="text" id="code" class="mui-input-clear" placeholder="输入验证码" data-input-clear="5">
+                        <span class="mui-icon mui-icon-clear mui-hidden"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="mui-popup-buttons">
+                <span class="mui-popup-button mui-popup-button-bold tx">提现</span>
+            </div>
+        </div>
+        <div class="mui-popup-backdrop backdrop" style="display:none"></div>  -->
+
+
+        <ul class="mui-table-view record-list">
+                <li class="mui-table-view-cell record-item text-center">
+                    <p class="empty-tips text-center">暂无相关信息</p>
+                </li>
+        </ul>
+    </div>
+    <script src="mui.min.js"></script>
+    <script src="jquery-1.11.3.js"></script>
+    <script>
+        $('.mui-btn').on('tap',function(){
+            console.log(43)
+            // mui.alert('您当前剩余未提现金额为￥金额达到￥才能提现', '提示', function () {
+
+            // });
+            $('.tx-phone-wrap').show();
+            $('.backdrop').show();
+            setTimeout(() => {
+                $('.tx-phone-wrap').addClass('mui-popup-in');
+                $('.backdrop').addClass('mui-active');
+            }, 0);
+        })
+        $('.backdrop').on('tap',function(){
+            $('.tx-phone-wrap').hide();
+            $('.backdrop').hide();
+                $('.tx-phone-wrap').removeClass('mui-popup-in');
+                $('.backdrop').removeClass('mui-active');
+        })
+         
+        $('.tx').on('tap',function(){
+            console.log(5453453)
+                var code = $("#code").val();
+                var phone = $("#phone").val();
+                console.log(code.length)
+                if (!code.trim().length || !phone.trim().length) {
+                    console.log("手机或者验证码不能为空")
+                }
+                
+        })
+    </script>
+</body>
+
+</html>

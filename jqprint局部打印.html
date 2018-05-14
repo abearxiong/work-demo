@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style media="print">
+        .table{
+            font-size: 20px;
+        }
+        .table td{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <table class="table table-hover table-bordered print-area" style="width:92%; border: 1px solid #000">
+        <thead>
+            <tr>
+                <th>编号</th>
+                <th>项目名称</th>
+                <!--<th>有效期至</th>-->
+                <th>班级</th>
+                <th>原单价</th>
+                <th>购买单价</th>
+                <th>数量</th>
+                <th>单位</th>
+                <th>金额</th>
+                <!-- <th>收费类型</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr >
+                <td>{{parseInt(index)+1}}</td>
+                <td>{{item.name}}</td>
+                <!--<td>{{item.etime}}</td>-->
+                <td>{{item.class}}</td>
+                <td>￥{{parseFloat(item.price).toFixed(2)}}</td>
+                <td>￥{{parseFloat(item.gm_price).toFixed(2)}}</td>
+                <td>{{item.num}}</td>
+                <td>{{item.unit}}</td>
+                <td>￥{{parseFloat(item.money).toFixed(2)}}</td>
+                <!-- <td>{{item.paytype}}</td> -->
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="8" class="text-right">合计金额：￥{{orderTotal}}</td>
+            </tr>
+        </tfoot>
+    </table>
+    <script src="jquery-1.11.3.js"></script>
+    <script src="jquery-migrate-1.2.1.min.js"></script>
+    <script src="jquery.jqprint-0.3.js"></script>
+    <script>
+        // window.print()
+        $('.print-area').jqprint();
+    </script>
+</body>
+</html>

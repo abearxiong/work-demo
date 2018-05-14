@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="animate.css">
+    <style>
+        .d1{
+            width: 200px;
+            height: 200px;
+            border:1px solid #f00;
+            background: #f00;
+            margin: 100px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="animated fadeInRight">范德萨范德萨分</div>
+    <div class="d1 fooReveal" data-scroll-reveal="enter top"></div>
+    <div style="height: 1000px"></div>
+    <div class="foo" data-scroll-reveal="enter top and move 50px flip 45deg over 1.33s" style="margin: 200px;">Hello world!</div>
+    <div id="container"></div>
+    <div id="fooContainer">
+        <div class="foo"> Foo 1 </div>
+        <div class="foo"> Foo 2 </div>
+        <div class="foo"> Foo 3 </div>
+    </div>
+    <div class="foo">Foo4</div>
+    <div id="barContainer">
+        <div class="bar"> Bar 1 </div>
+        <div class="bar"> Bar 2 </div>
+        <div class="bar"> Bar 3 </div>
+    </div>
+    <!--<script src="js/jquery-1.11.3.js"></script>-->
+    <script src="js/scrollreveal.js"></script>
+    <script>
+//        setTimeout(function () {
+//            $('.d1').removeClass('hinge')
+//        },2000)
+//        if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+//            (function(){
+//                window.scrollReveal = new ScrollReveal();
+//            })();
+//        };
+var fooReveal = {
+    origin   : 'top',
+    delay    : 300,
+    distance : '60px',
+    easing   : 'ease-in-out',
+    rotate   : {z: 40 },
+    opacity  : 0.5,
+    scale    : 0.5,
+    reset    : true,
+    mobile   :true,
+    useDelay :'always',
+    viewFactor :0.9,
+//    viewOffset:{top:30,bottom:50}
+//    afterReveal:function () {
+//        alert('over')
+//    },
+//    afterReset:function () {
+//        alert('reset')
+//    }
+};
+var leftReveal = {
+    origin : 'left',
+    delay    : 200,
+    distance : '200px',
+    easing   : 'ease-in-out',
+    rotate   : { z: 10 },
+    scale    : 0.6,
+    reset    : true
+};
+
+//window.scrollReveal = new ScrollReveal()
+//        .reveal( fooReveal)
+//        .reveal( '.foo', leftReveal );
+
+var fooContainer = document.getElementById('fooContainer');
+var barContainer = document.getElementById('barContainer');
+
+window.sr = ScrollReveal()
+        .reveal( '.foo' ,leftReveal)
+.reveal( '.bar', { container: barContainer } ).reveal('.d1',fooReveal);
+
+//        window.scrollReveal = new scrollReveal();
+//        scrollReveal.reveal('.foo',{ duration: 1000 });
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+.dbjt{width: 24.69135802469136%; padding-top: 12.34567901234568%; position: absolute; bottom: 5%; left: 50%; margin-left: -12.34567901234568%; z-index: 999; background: url(../img/bjt.png) no-repeat center;
+-webkit-background-size: cover;
+background-size: cover;
+-webkit-animation: nextPage 1.2s linear infinite;
+animation: nextPage 1.2s linear infinite;
+}
+.dbjt.h{background-image: url(../img/hjt.png);}
+
+@-webkit-keyframes nextPage {
+    0% {
+        -webkit-transform: translateY(10px);
+        transform: translateY(10px);
+        opacity: 0.8;
+    }
+    50% {
+        -webkit-transform: translateY(20px);
+        transform: translateY(20px);
+        opacity: 0.4;
+    }
+    100% {
+        -webkit-transform: translateY(40px);
+        transform: translateY(40px);
+        opacity: 0;
+    }
+}

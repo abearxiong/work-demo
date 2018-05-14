@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+<body>
+    <a tabindex="0" class="btn btn-lg btn-danger" role="button"  data-placement="bottom" data-toggle="popover" data-trigger="focus" title="Dismissible popover"
+        data-content="And here's some amazing content. It's very engaging. Right?">可消失的弹出框</a>
+        <script src="jquery-1.11.3.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script>
+    $('.btn').hover(function(){
+        $('.btn').popover('show');
+    },function(){
+         $('.btn').popover('hide');
+    })
+    </script>
+    
+</body>
+</html>

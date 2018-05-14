@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #input{
+            position: fixed;
+            bottom: 0;
+        }
+
+        /* 使用text-align: center;和  writing-mode: vertical-lr实现图片垂直居中*/
+        .d1{
+            width: 400px;
+            height: 200px;
+            background: #ddd;
+            text-align: center;
+            writing-mode: vertical-lr;  /**设置为垂直流**/
+        }
+
+            /* text-indent: 2px;和  writing-mode: vertical-lr;实现点击“领”，文字向下移动动画*/
+        .d2{
+            display: inline-block;
+            background: #f00;
+            color: #fff;
+            /* padding: 10px; */
+            border-radius: 50%;
+            writing-mode: vertical-lr;
+            height: 50px;
+            width: 50px;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .d2:active{
+            text-indent: 2px;
+        }
+
+
+        .d4{
+            width: 10rem;
+            height: 5rem;
+            background: #f00;
+        }
+        html {
+            font-size: 16px;
+        }
+
+        @media screen and (min-width: 375px) {
+            html {
+                /* iPhone6的375px尺寸作为16px基准，414px正好18px大小, 600 20px */
+                font-size: calc(100% + 2 * (100vw - 375px) / 39);
+                font-size: calc(16px + 2 * (100vw - 375px) / 39);
+            }
+        }
+        @media screen and (min-width: 414px) {
+            html {
+                /* 414px-1000px每100像素宽字体增加1px(18px-22px) */
+                font-size: calc(112.5% + 4 * (100vw - 414px) / 586);
+                font-size: calc(18px + 4 * (100vw - 414px) / 586);
+            }
+        }
+        @media screen and (min-width: 600px) {
+            html {
+                /* 600px-1000px每100像素宽字体增加1px(20px-24px) */
+                font-size: calc(125% + 4 * (100vw - 600px) / 400);
+                font-size: calc(20px + 4 * (100vw - 600px) / 400);
+            }
+        }
+        @media screen and (min-width: 1000px) {
+            html {
+                /* 1000px往后是每100像素0.5px增加 */
+                font-size: calc(137.5% + 6 * (100vw - 1000px) / 1000);
+                font-size: calc(22px + 6 * (100vw - 1000px) / 1000);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <div class="d1">
+            <img src="fef.jpg" alt="">
+        </div>
+        <div class="d2">
+            领
+        </div>
+        <div class="d3">
+            <button>确认</button>
+            <button>取消</button>
+        </div>
+        <div class="d4"></div>
+        <input type="text" id="input">
+    </div>
+    <script>
+        // 解决老版本ios中input被弹出的键盘挡住的问题！！
+        // Element.scrollIntoView():方法让当前的元素滚动到浏览器窗口的可视区域内。
+
+        document.getElementById('input').scrollIntoView(true);
+    </script>
+</body>
+</html>

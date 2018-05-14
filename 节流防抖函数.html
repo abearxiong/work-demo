@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            height: 10000px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+
+        
+            /*防抖函数*/
+    /*
+        function debounce(func, wait) {
+            var timeID = null;
+            return function () {   // 返回函数，页面scroll时执行此函数，如果页面频繁的scroll，第二句还没执行又开始执行第一句了，除非scroll的间隔大于wait秒才能执行第二句
+                // 首先是清空定时器
+                clearTimeout(timeID);
+                // 延迟 wait ms后执行真正的事件处理函数
+                timeID = setTimeout(func, wait);
+            }
+        }
+
+        function hanlder() {
+            console.log('Hanlde the scroll event.');
+        }
+
+        window.addEventListener('scroll', debounce(hanlder, 400));
+        console.log(debounce(hanlder, 400))
+
+    */
+
+
+
+
+
+        
+            /*节流函数*/
+    /*
+        var throttle = function (func, wait) {
+            var timeout,
+                context,
+                args,
+                startTime = Date.parse(new Date()); // 转为时间戳
+            console.log(1)
+            return function () {
+                console.log(2)
+                var curTime = Date.parse(new Date());
+                var remaining = wait - (curTime - startTime);
+                context = this;
+                args = arguments;
+                clearTimeout(timeout);
+
+                if (remaining <= 0) {
+                    func.apply(context, args);
+                    startTime = Date.parse(new Date());
+                } else {
+                    timeout = setTimeout(func, remaining);
+                }
+            }
+        };
+         window.addEventListener('scroll', throttle(hanlder, 1000));
+    */
+    </script>
+</body>
+</html>

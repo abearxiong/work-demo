@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>适配移动端的拖动效果</title>
+    <style>
+        #div1 {
+            height: 1000px;
+        }
+
+        #el {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background: #bbbbbb;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1">
+        <div id="el"></div>
+    </div>
+    <script src="jquery-1.11.3.js"></script>
+    <script>
+
+        ; (function ($) {
+            $.extend({
+                "drag": function (el) {
+                    var flag = false;
+                    var cur = {
+                        x: 0,
+                        y: 0
+                    }
+                    var nx, ny, dx, dy, x, y;
+                    function down() {
+                        flag = true;
+                        var touch;
+                        if (event.touches) {
+                            touch = event.touches[0];
+                        } else {
+                            touch = event;
+                        }
+                        cur.x = touch.clientX;
+                        cur.y = touch.clientY;
+                        dx = el.offsetLeft;
+                        dy = el.offsetTop;
+                    }
+                    function move() {
+                        if (flag) {
+                            var touch;
+                            if (event.touches) {
+                                touch = event.touches[0];
+                            } else {
+                                touch = event;
+                            }
+                            nx = touch.clientX - cur.x;
+                            ny = touch.clientY - cur.y;
+                            x = dx + nx;
+                            y = dy + ny;
+                            el.style.left = x + "px";
+                            el.style.top = y + "px";
+                            //阻止页面的滑动默认事件
+                            el.addEventListener("touchmove", function () {
+                                event.preventDefault();
+                            }, false);
+                        }
+                    }
+                    //鼠标释放时候的函数
+                    function end() {
+                        flag = false;
+                    }
+                    // var el = document.getElementById("el");
+                    el.addEventListener("mousedown", function () {
+                        down();
+                    }, false);
+                    el.addEventListener("touchstart", function () {
+                        down();
+                    }, false)
+                    el.addEventListener("mousemove", function () {
+                        move();
+                    }, false);
+                    el.addEventListener("touchmove", function () {
+                        move();
+                    }, false)
+                    document.body.addEventListener("mouseup", function () {
+                        end();
+                    }, false);
+                    el.addEventListener("touchend", function () {
+                        end();
+                    }, false);
+                }
+            });
+        })(jQuery);
+        $.drag($('#el')[0])
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .green{
+            display: block;
+            background: green;
+            width: 100px;
+            height: 20px;
+            line-height: 20px;
+            padding:5px;
+            margin: 50px;
+            text-align: center;
+            font-size: 12px;
+        }
+        .progre{
+            position: relative;
+        }
+        .progre:after,.progre:before{
+            content: "";
+            width: 100px;
+            height: 8px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -15px;
+        }
+        .progre:before{
+            background: #ddd;
+        }
+        .progre:after{
+            background: green;
+            padding-right: 0%;
+            box-sizing: border-box;
+            background-clip: content-box;  /*设置背景只填充内容区域，内边距、外边距、边框不会吧被填充*/
+            animation: progress 10s;
+        }
+        @keyframes progress {
+            0%{
+                padding-right: 100%;
+            }
+            1%{
+                padding-right: 70%;
+            }
+            3%{
+                padding-right: 50%;
+            }
+            10%{
+                padding-right: 30%;
+            }
+            20%{
+                padding-right: 10%;
+            }
+            40%{
+                padding-right: 8%;
+            }
+            60%{
+                padding-right: 5%;
+            }
+            80%{
+                padding-right: 2%;
+            }
+            100%{
+                padding-right: 0%;
+            }
+
+        }
+    </style>
+</head>
+<body>
+<span class="green" id="load">点击加载</span>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    $('#load').on('click',function () {
+        $(this).html('正在加载中...').addClass('progre');
+        setTimeout(function () {
+            $(this).html('请求超时').removeClass('progre');
+
+        }.bind(this),50000)
+    })
+</script>
+</body>
+</html>

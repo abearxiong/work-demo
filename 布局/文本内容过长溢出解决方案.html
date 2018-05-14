@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .example-1 * {
+            margin-bottom: 1rem;
+        }
+        .example-1 a {
+            display: block;
+            width: 300px;
+            border: 1px solid #bdbdbd;
+            border-radius: 4px;
+            padding: 1.25rem 1rem;
+            background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/182774/add_copy.svg") right 10px center/18px no-repeat;
+            text-decoration: none;
+            color: #000;
+        }
+        .example-1 a:hover {
+            background-color: #f6f6f6;
+        }
+        .example-1 a.has-issue {
+            width: 210px;
+        }
+        .example-1 a.issue-fixed {
+            width: 200px;
+            padding-right: 2.5rem;  /*!! 解决办法：增加padding-right 以给background 更多空间*/
+        }
+
+
+
+
+        .example-2 form {
+            position: relative;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            max-width: 320px;
+            margin-bottom: 1rem;
+        }
+        .example-2 form label {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+        }
+        .example-2 input {
+            -webkit-box-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            border: 1px solid lightgrey;
+            padding: 12px 10px;
+            padding-top: 20px;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            font-size: 16px;
+            outline: 0;
+        }
+        .example-2 input:focus + span {   /*input聚焦，placeholder动画效果*/
+            -webkit-transform: translateY(-8px) scale(0.7);
+            transform: translateY(-8px) scale(0.7);
+        }
+        .example-2 button {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 100px;
+            flex: 0 0 100px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border: 0;
+            font-size: 16px;
+            background: #2564c9;
+            color: #fff;
+            cursor: pointer;
+        }
+        .example-2 span {
+            position: absolute;
+            left: 10px;
+            top: 15px;
+            color: #aaa;
+            pointer-events: none;
+            -webkit-transform-origin: left top;
+            transform-origin: left top;
+            -webkit-transition: -webkit-transform 0.25s ease-out;
+            transition: -webkit-transform 0.25s ease-out;
+            transition: transform 0.25s ease-out;
+            transition: transform 0.25s ease-out, -webkit-transform 0.25s ease-out;
+        }
+        .example-2 .issue-fixed button {
+            position: relative;         /*!!解决办法：为按钮添加position定位，提升该按钮的z-index值，这样内容就在该按钮下面了*/
+        }
+
+        .js-input-filled + span {
+            -webkit-transform: translateY(-8px) scale(0.7);
+            transform: translateY(-8px) scale(0.7);
+        }
+
+
+
+
+
+
+       .example-3 .card--fixed .card-meta {  /*解决办法：为父容器添加flex*/
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+        }
+
+        /* */
+        .card {
+            width: 240px;
+            min-height: 300px;
+            background: #2564c9;
+            border-radius: 5px;
+            padding: 1rem;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            margin-right: 1.5rem;
+            margin-bottom: 1.5rem;
+            float: left;
+            color: #fff;
+        }
+        .card time {
+            font-size: 14px;
+            opacity: 0.8;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .card h2 {
+            font-size: 1.35rem;
+            font-weight: bold;
+            margin-bottom: 1.25rem;
+        }
+        .card .card-meta {
+            overflow: auto;
+            margin-top: auto;
+        }
+        .card img {
+            float: left;
+            width: 70px;
+            height: 70px;
+            -o-object-fit: cover;
+            object-fit: cover;
+            margin-right: 1rem;
+            border: 3px solid #fff;
+            border-radius: 4px;
+        }
+        .card .author {
+            float: left;
+        }
+        .card .author span {
+            font-size: 13px;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+
+
+        .article-content.fixed p {
+            overflow: hidden;
+            text-overflow: ellipsis;   /*文本内容超出用三个点代替*/
+            word-break: break-all;    /*或者强制文本换行*/
+        }
+
+        /* non demo css */
+        .article-content {
+            display: inline-block;
+            vertical-align: top;
+            background: #f6f6f6;
+            border: 1px solid #bdbdbd;
+            border-radius: 4px;
+            padding: 1rem;
+            line-height: 1.4;
+            width: 200px;
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        body {
+            padding: 1rem;
+        }
+
+
+
+
+        .example-5 .card {
+            position: relative;
+            width: 450px;
+            min-height: 170px;
+            background: linear-gradient(rgba(37, 100, 201, 0), rgba(0, 0, 0, 0.5)), url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/182774/landscape.jpg") center/cover no-repeat;
+            border-radius: 5px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            margin-right: 1.5rem;
+            color: #fff;
+            padding-top: 60px;
+            margin-bottom: 1rem;
+        }
+        .example-5 .card time {
+            font-size: 14px;
+            opacity: 0.8;
+            display: block;
+            margin-bottom: 0.5rem;
+            margin-top: auto;
+        }
+       .example-5  .card h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+        .example-5 .card .category {
+            position: absolute;
+            left: 0;
+            top: 16px;
+            width: 120px;
+            height: 16px;
+            background: #2564c9;
+            padding: 8px;
+            padding-left: 20px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .example-5 .card .category.fix {
+            min-width: 120px;    /*解决方法：使用最小宽度且高度自动适应*/
+            height: auto;
+        }
+
+        body {
+            padding: 1rem;
+            font-family: 'Roboto', sans-serif;
+        }
+
+
+
+        .header-1 {
+            position: relative;
+        }
+        .header-1 a {
+            position: absolute;
+            right: 0;
+            top: 5px;
+        }
+
+        .header-2 {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;             /*解决方法：父容器使用flex,且flex容器为多行 flex-wrap: wrap;。该情况下flex子项溢出的部分会被放置到新行，子项内部会发生断行*/
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+        .header-2 h2 {
+            margin-right: 0.5rem;
+        }
+
+        /*************/
+        header {
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid lightgrey;
+        }
+
+        body {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 1rem;
+            font-family: 'Roboto', sans-serif;
+        }
+
+
+
+
+
+        .title {
+            border-bottom: 1px solid #ccc;
+            max-width: 500px;
+            margin: 40px auto;
+        }
+
+        .title-note {
+            font-size: 60%;
+            color: #999;
+        }
+
+        .abs-title {
+            position: relative;
+        }
+        .abs-title .title-note {
+            position: absolute;
+            bottom: 2px;
+            right: 0;
+        }
+
+        .float-title .title-note {
+            float: right;
+            position: relative;
+            top: 12px;
+        }
+
+        .table-title {
+            display: table;
+            width: 100%;
+        }
+        .table-title > span {
+            display: table-cell;
+            white-space: nowrap;
+        }
+        .table-title .title-main {
+            width: 99%;
+        }
+
+        .flex-title {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: end;
+            -ms-flex-align: end;
+            align-items: flex-end;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        }
+        .flex-title > span {
+            white-space: nowrap;
+        }
+        .flex-title .title-main {
+            -webkit-box-flex: 1;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+<div class="c">
+    <div class="b">
+        <span class="a">312321</span>
+    </div>
+</div>
+        <!--文本太长，盖住了文本里右侧或者左侧的icon-->
+    <div class="example example-1">
+        <a href="#"><strong>1 eBooks</strong> (PDF, ePub, Amazon Kindle)</a>
+        <a href="#" class="has-issue"><strong>1 eBooks</strong> (PDF, ePub, Amazon Kindle)</a>
+        <a href="#" class="issue-fixed"><strong>1 eBooks</strong> (PDF, ePub, Amazon Kindle)</a>
+    </div>
+
+
+        <!--输入框中的placeholder文本太长，盖住了输入框右侧的button-->
+    <div class="example example-2">
+        <form action="">
+            <label for="">
+                <input type="text"/>
+                <span>Email address</span>
+            </label>
+            <button>Login</button>
+        </form>
+
+        <form action="">
+            <label for="">
+                <input type="text"/>
+                <span>Here is a long placeholder content</span>
+            </label>
+            <button>Login</button>
+        </form>
+
+        <form action="" class="issue-fixed">
+            <label for="">
+                <input type="text"/>
+                <span>Here is a long placeholder content</span>
+            </label>
+            <button>Login</button>
+        </form>
+    </div>
+
+
+
+        <!--左右两块横排排列的，因为右侧文本内容太长，导致变成竖排排列了-->
+    <div class="example example-3">
+        <article class="card">
+            <time>31 March 2017</time>
+            <h2>Using DevTools to Tweak Designs in the browser</h2>
+            <div class="card-meta">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/182774/shadeed_copy_copy.jpg" alt="">
+                <div class="author">
+                    <span>Written by</span>
+                    <h3>Frederick Manning</h3>
+                </div>
+            </div>
+        </article>
+
+        <article class="card">
+            <time>31 March 2017</time>
+            <h2>Using DevTools to Tweak Designs in the browser</h2>
+            <div class="card-meta">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/182774/shadeed_copy_copy.jpg" alt="">
+                <div class="author">
+                    <span>Written by</span>
+                    <h3>Christopher Armstrong</h3>
+                </div>
+            </div>
+        </article>
+
+        <article class="card card--fixed">
+            <time>31 March 2017</time>
+            <h2>Using DevTools to Tweak Designs in the browser</h2>
+            <div class="card-meta">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/182774/shadeed_copy_copy.jpg" alt="">
+                <div class="author">
+                    <span>Written by</span>
+                    <h3>Christopher Armstrong</h3>
+                </div>
+            </div>
+        </article>
+    </div>
+
+
+
+            <!--文本或者链接太长-->
+        <div class="example example-4">
+            <div class="article-content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Visit our website <a href="#">www.example.com</a>. Sapiente rerum nesciunt modi harum. Facilis ipsa, illo recusandae magnam minima fugit a. Sequi eveniet esse inventore sit odit eum, ab enim.</p>
+            </div>
+            <div class="article-content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Visit our website <a href="#">www.alongwebsitenamehere.com</a>. Sapiente rerum nesciunt modi harum. Facilis ipsa, illo recusandae magnam minima fugit a. Sequi eveniet esse inventore sit odit
+                    eum, ab enim.</p>
+            </div>
+
+            <div class="article-content fixed">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Visit our website <a href="#">www.alongwebsitenamehere.com</a>. Sapiente rerum nesciunt modi harum. Facilis ipsa, illo recusandae magnam minima fugit a. Sequi eveniet esse inventore sit odit
+                    eum, ab enim.</p>
+            </div>
+        </div>
+
+
+
+                <!--标签上的文本过长问题-->
+        <div class="example example-5">
+            <article class="card">
+                <span class="category">web design</span>
+                <time>31 March 2017</time>
+                <h2>Using DevTools to Tweak Designs in the browser</h2>
+            </article>
+
+            <article class="card">
+                <span class="category">web design and development</span>
+                <time>31 March 2017</time>
+                <h2>Using DevTools to Tweak Designs in the browser</h2>
+            </article>
+
+            <article class="card">
+                <span class="category fix">web design and development</span>
+                <time>31 March 2017</time>
+                <h2>Using DevTools to Tweak Designs in the browser</h2>
+            </article>
+        </div>
+
+
+            <!--一行内左右两块内容，左边内容太长，导致与右边内容重叠-->
+        <div style="clear: both">
+            <header class="header-1">
+                <h2>Web Design</h2>
+                <a href="#">View more</a>
+            </header>
+
+            <header class="header-1">
+                <h2>Web Design & Development</h2>
+                <a href="#">View more</a>
+            </header>
+
+            <header class="header-2">
+                <h2>Web Design & Development</h2>
+                <a href="#">View more</a>
+            </header>
+        </div>
+
+
+        <h3 class="title abs-title">
+            <span class="title-main">Main Title Here</span>
+            <span class="title-note">This is absolutely positioned.</span>
+        </h3>
+        <h3 class="title float-title">
+            <span class="title-main">Main Title Here</span>
+            <span class="title-note">This subtitle is floated.</span>
+        </h3>
+        <h3 class="title table-title">
+            <span class="title-main">Main Title Here</span>
+            <span class="title-note">I am a table cell.</span>
+        </h3>
+        <h3 class="title flex-title">
+            <span class="title-main">Main Title Here</span>
+            <span class="title-note">This is a good look, right here.</span>
+        </h3>
+
+    <script>
+        var inputs = document.querySelectorAll('input[type="text"]');
+
+        for(var i=0; i<inputs.length; i++) {
+            inputs[i].addEventListener('blur', checkValue);
+        }
+
+        function checkValue(e) {
+            var elem = e.target;
+            console.log(elem);
+            if(elem.value != "") {
+                elem.classList.add('js-input-filled');
+            } else {
+                elem.classList.remove('js-input-filled');
+            }
+        }
+    </script>
+</body>
+</html>

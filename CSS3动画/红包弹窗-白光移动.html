@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="红包弹窗动画.css">
+    <style>
+        .hb-pop{
+            width: 300px;
+            height: 400px;
+            margin: 100px auto;
+            background: #A5423A;
+            border-radius: 10px;
+            display: none;
+            /*animation:rxdlogAni 0.5s both;*/
+            position: relative;
+        }
+        .hb-pop.activeIn{
+            animation:rxdlogAni 0.5s both;
+            display:block;
+        }
+        .hb-pop.activeOut{
+            animation: rxdlogAniOut .5s both;
+            /*display: none;*/
+        }
+        .hb-pop span{
+            width: 30px;
+            height: 30px;
+            line-height: 24px;
+            text-align: center;
+            border: 1px solid #333;
+            border-radius: 50%;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            transition: transform 0.5s;
+            font-size: 30px;
+        }
+        .hb-pop span:hover{
+            transform: rotate(360deg);
+        }
+        .get-hb{
+            border: 1px solid #00a0e9;
+            background: #00a0e9;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: inline-block;
+            margin: 50px auto;
+            cursor: pointer;
+            animation: bigAssButtonPulse 2s infinite both;
+            user-select: none;
+        }
+        .get-hb:active {
+            -webkit-transform: translateY(1px);
+        }
+        @-webkit-keyframes bigAssButtonPulse {
+            from { background-color: #00a0e9; -webkit-box-shadow: 0 0 20px #333; }
+            50% { background-color: #00a0d6; -webkit-box-shadow: 0 0 40px #91bd09; }
+            to { background-color: #00a0e9; -webkit-box-shadow: 0 0 20px #333; }
+        }
+        .open{
+            font-size: 30px;
+            width: 40px;
+            height: 80px;
+            /*border:1px solid #ddd;*/
+            /*border-radius: 50%;*/
+            /*background: #ddd;*/
+            text-align: center;
+            line-height: 80px;
+            position: absolute;
+            top:50%;
+            left:45%;
+            transform: translate3d(-50%,0,0);
+            opacity: 0;
+            transition: width 0.5s ease-in 2s,height 0.5s ease-in 2s,left 0.5s ease-in 2s,opacity 0.01s ease-in 2s;
+        }
+        .open img{
+            width: 100%;
+        }
+        .open.active{
+            opacity: 1;
+            width: 80px;
+            height: 80px;
+            left: 45%;
+
+        }
+    </style>
+</head>
+<body>
+    <span class="get-hb">点击领取红包</span>
+    <div class="hb-pop">
+        <span>&times;</span>
+        <div class="open">
+            <img src="page-12-2.png" alt="">
+        </div>
+    </div>
+    <div class="open">
+        <img src="page-12-2.png" alt="">
+    </div>
+    <script src="js/jquery-1.11.3.js"></script>
+    <script>
+        $('.get-hb').on('click',function () {
+            $('.hb-pop').addClass('activeIn').removeClass('activeOut');
+            $('.open').addClass('active');
+        })
+        $('.hb-pop span').on('click',function () {
+            $('.hb-pop').addClass('activeOut');//.removeClass('activeIn');
+        })
+        $('.hb-pop').on('click',function () {
+            console.log(1111);
+        })
+    </script>
+</body>
+</html>
