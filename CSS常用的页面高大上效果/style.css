@@ -1,0 +1,80 @@
+    /* 毛玻璃蒙版 */
+.box1 {
+    position: relative;
+    height: 200px;
+    width: 300px;
+    background: fixed url(http://www.imaoda.com/s/img/github/21.jpg);
+}
+
+.box1 .blur-modal {
+    position: absolute;
+    height: 50px;
+    width: 300px;
+    top: 150px;
+    background: fixed url(http://www.imaoda.com/s/img/github/21.jpg);
+    filter: blur(1rem)
+}
+
+.box1 .black-modal {
+    position: absolute;
+    height: 50px;
+    width: 300px;
+    top: 150px;
+    background: rgba(0, 0, 0, .2);
+    color: white
+}
+
+
+
+
+
+
+.suit{
+	position: relative
+}
+.figure{
+	background: url(http://www.imaoda.com/s/img/github/21.jpg);
+    background-size: 150%;
+    background-position: center;
+	height: 200px; width: 400px;
+	filter: blur(16px)
+}
+.modal{
+	position: absolute;
+	height: 200px; width: 400px; top: 0px; left: 0px; 
+	background: rgba(0,0,0,.3);
+	color: white; text-align: center
+}
+
+
+
+
+
+
+.box3{
+    background:  #003366;
+}
+.back{
+	height: 180px;width: 400px;
+	background: url(http://www.imaoda.com/s/img/tpl/content-frame1.png) no-repeat;
+	background-size: contain; 
+	background-position: center;
+	color: white;
+	text-align: center;
+}
+
+
+
+
+
+.box4{
+    background: black;
+    padding: 10px
+}
+.box4 .box{
+	height: 20rem; width: 40rem; color:white; padding: 1rem;
+	box-shadow: 0 0 3rem rgba(100,200,255,.5) inset;
+	background: rgba(0,0,0,.3); 
+}
+
+
