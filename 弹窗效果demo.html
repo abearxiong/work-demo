@@ -153,7 +153,11 @@
             $('#modal-1').addClass('md-show');
         })
         $('.md-overlay,.md-close').on('click',function(){
+            console.log('蒙层')
             $('#modal-1').removeClass('md-show');
+        })
+        $('#modal-1').on('click',function(){
+            console.log('弹窗外层')
         })
     </script>
 </body>

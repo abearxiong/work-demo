@@ -78,3 +78,295 @@
 }
 
 
+.box5{
+    background: url(http://www.imaoda.com/s/img/tpl/sky1.jpg);
+     padding: 1rem;
+     color:#fff;
+}
+.box5 .panel{
+	height: 12rem; width: 24rem; color:rgba(60,240,250,1); font-size: 1.5rem; padding:1rem;
+	border-radius: .5rem;
+	border: 1px solid rgba(0,180,220,0.5);
+	background: linear-gradient(180deg,rgba(0,180,220,0.3),rgba(0,180,220,0.1),rgba(0,180,220,0.1),rgba(0,180,220,0.3));
+	box-shadow: 0 0 2rem rgba(0,180,220,.1) inset
+}
+
+
+.box6{
+    padding: 3rem;
+    background: rgba(0,0,0,.9);
+    color: #fff;
+}
+.box6 .panel{
+	height: 12rem; width: 24rem;
+	border: 1px solid rgba(22,78,137,1);
+	background: rgba(13,35,61,1);
+	position: relative;
+}
+.box6 .panel::after{
+	content: attr(data-corner);
+	display: block; position: absolute; top: 0; right: 0; 
+	width: 5rem; padding: 0 1rem; overflow: hidden; text-align: right; color: rgba(255,255,255,.9);
+	background: linear-gradient(45deg,transparent 0% , transparent 30%,  rgba(22,78,137,1) 30%,  rgba(22,78,137,1) 100%)
+}
+
+.box7{
+    background: #aaa;
+    padding: 5rem;
+    color: #fff;
+}
+.box7 li{
+	display: inline-block; height: 200px; width: 150px;
+	background: url(http://www.imaoda.com/s/img/github/sgs.jpg);
+	background-size: 100%;
+	box-shadow: 0 2px 2px #222222;
+	border: 2px solid transparent;
+	border-radius: 5px;
+	filter: brightness(.7);
+	cursor: pointer;
+	transition: all .2s
+}
+li:hover{
+	box-shadow: 0 0 30px yellow;
+	border: 2px solid yellow;
+	transform: translate(0,-10%);
+	filter: brightness(1);
+}
+
+
+.box8{
+  position: relative; 
+  width: 220px;
+   height: 220px;
+  display: flex;
+   justify-content: center;
+    align-items: center;
+  background:#333;
+}
+.ring-inner{
+  height: 220px; width: 220px; position: absolute;
+  background: url(http://www.imaoda.com/s/img/tpl/ring-inner.png) no-repeat;
+  background-size: 90%; background-position: center;
+  animation: clockwise 3s linear infinite;
+}
+.ring-outer{
+  height: 220px; width: 220px; position: absolute;
+  background: url(http://www.imaoda.com/s/img/tpl/ring-outer.png) no-repeat;
+  background-size: 100%;
+  background-position: center;
+  animation: anti-clockwise 3s linear infinite;
+}
+.avatar{
+  height: 160px; width: 160px;
+  background: url(http://www.imaoda.com/s/img/lessons/92.jpg);
+  background-size: cover;
+  border-radius: 50%
+}
+@keyframes clockwise{
+  100%{
+    transform: rotate(360deg)
+  }
+}
+@keyframes anti-clockwise{
+  0%{
+    transform: rotate(360deg)
+  }
+}
+
+
+.box9 .box{
+    height: 400px; width: 100px;
+	border: 10px solid transparent;
+	border-image: linear-gradient(45deg,red,blue) 10%
+}
+
+button {
+    padding: 20px;
+    background-image: linear-gradient(#5187c4, #1c2f45);
+    background-size: auto 200%;
+    background-position: 0 100%;
+    transition: background-position 0.5s;
+}    
+button:hover {
+    background-position: 0 0;
+}
+
+
+.box-shadow {
+    background-color: #FF8020;
+    width: 160px;
+    height: 90px;
+    margin-top: -45px;
+    margin-left: -80px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+.box-shadow:after {
+    content: "";
+    width: 150px;
+    height: 1px;
+    margin-top: 88px;
+    margin-left: -75px;
+    display: block;
+    position: absolute;
+    left: 50%;
+    z-index: -1;
+    -webkit-box-shadow: 0px 0px 8px 2px #000000;
+       -moz-box-shadow: 0px 0px 8px 2px #000000;
+            box-shadow: 0px 0px 8px 2px #000000;
+}
+
+
+.table-box{
+    padding: 20px 0;
+    overflow-x: scroll;
+}
+.table-box table{
+    width: 100%;
+    border: 1px solid #000;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+table td,table th{
+    padding: 0 5px;
+    border: 1px solid #333;
+    text-align: center;
+    white-space: nowrap;
+}
+
+
+.blurry-text {
+    padding: 20px;
+   color: transparent;
+   text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+
+.loading:after {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    animation: ellipsis 2s infinite;
+    content: "\2026"; /* ascii code for the ellipsis character */
+    /* font-size: 50px; */
+}
+@keyframes ellipsis {
+    from {
+        width: 2px;
+    }
+    to {
+        width: 15px;
+    }
+}
+
+/* 自定义文本选择的背景色 */
+::selection { background: #f00; }
+
+
+#colorbox {
+    height: 200px;
+    background: #629721;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#83b842), to(#629721));
+    background-image: -webkit-linear-gradient(top, #83b842, #629721);
+    background-image: -moz-linear-gradient(top, #83b842, #629721);
+    background-image: -ms-linear-gradient(top, #83b842, #629721);
+    background-image: -o-linear-gradient(top, #83b842, #629721);
+    background-image: linear-gradient(top, #83b842, #629721);
+}
+
+input[type=text], textarea {
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 1px solid #ddd;
+}
+input[type=text]:focus, textarea:focus {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 1px solid rgba(81, 203, 238, 1);
+}
+
+
+a {
+    color: #00e;
+}
+a:visited {
+    color: #551a8b;
+}
+a:hover {
+    color: #06e;
+}
+a:focus {
+    outline: thin dotted;
+}
+a:hover, a:active {
+    outline: 0;
+}
+a, a:visited, a:active {
+    text-decoration: none;
+    color: #fff;
+    -webkit-transition: all .3s ease-in-out;
+}
+a:hover, .glow {
+    color: #ff0;
+    text-shadow: 0 0 10px #ff0;
+}
+
+
+
+ul.box {
+    position: relative;
+    z-index: 1; /* prevent shadows falling behind containers with backgrounds */
+    overflow: hidden;
+    list-style: none;
+    margin: 0;
+    padding: 0; 
+}
+ul.box li {
+    position: relative;
+    float: left;
+    width: 250px;
+    height: 150px;
+    padding: 0;
+    border: 1px solid #efefef;
+    margin: 0 30px 30px 0;
+    background: #fff;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset; 
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset; 
+}
+ul.box li:before,
+ul.box li:after {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    width: 70%;
+    max-width: 300px; /* avoid rotation causing ugly appearance at large container widths */
+    max-height: 100px;
+    height: 55%;
+    -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    -webkit-transform: skew(-15deg) rotate(-6deg);
+    -moz-transform: skew(-15deg) rotate(-6deg);
+    -ms-transform: skew(-15deg) rotate(-6deg);
+    -o-transform: skew(-15deg) rotate(-6deg);
+    transform: skew(-15deg) rotate(-6deg); 
+}
+ul.box li:after {
+    left: auto;
+    right: 10px;
+    -webkit-transform: skew(15deg) rotate(6deg);
+    -moz-transform: skew(15deg) rotate(6deg);
+    -ms-transform: skew(15deg) rotate(6deg);
+    -o-transform: skew(15deg) rotate(6deg);
+    transform: skew(15deg) rotate(6deg); 
+}
