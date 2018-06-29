@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            height: 2000px;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">点击</button>
+    <script>
+        function throttle(fn, wait) {
+                var timer;
+                console.log(this)
+                return function (...args) {
+                    // console.log(args)
+                    if (!timer) {
+                        timer = setTimeout(() => {
+                            timer = null;
+                            console.log(arguments)
+                        }, wait);
+                        console.log(timer)
+                        console.log(this)
+                        return fn.apply(this, args)
+                    }
+                }
+            }
+
+            const fn = function () { 
+                console.log("btn clicked")
+                console.log(this)
+                console.log(arguments)
+                }
+            const btn = document.getElementById('btn');
+            //btn.onclick = fn();//throttle(fn, 1000);
+            btn.addEventListener('click', throttle(fn, 1000))
+
+            function log(){
+               let args = Array.prototype.slice.apply(arguments); // arguments本身没有slice方法，所以用apply改变slice方法的上下文(Array.prototype)为arguments   (apply,call,bind都是改变函数的上下文的)
+               console.log(args)
+               args.unshift('(apple)')
+               console.log(args.join(''))
+            }
+            log('ret','fsddsf')
+
+            // btn.addEventListener('click',fn,'fasdfds',6546)
+    </script>
+</body>
+</html>

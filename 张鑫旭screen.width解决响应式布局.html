@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            /* 普通屏幕的样式 */
+        .d{
+            width: 200px;
+            height: 200px;
+            background: #f00;
+        }
+        /* 小屏幕的样式 */
+        .S .d{
+            width: 100%;
+        }
+        /* 大屏幕的样式 */
+        .L .d{
+            width: 800px;
+        }
+    </style>
+    <script>
+            /**
+             * 首先要了解下不会说谎的screen.width，screen.width顾名思义就是屏幕的宽度，对，屏幕的宽度，与显示器宽度没有任何关系，就算你把显示器宽度缩小到芝麻糊那么大，screen.width还是不会变。
+             */
+        (function (doc, win) {
+                var screenWidth = 0, size = 'M', root = doc.documentElement;
+                if (window.screen && screen.width) {
+                    screenWidth = screen.width;
+                    if (screenWidth > 1200) {
+                        // 超大屏，例如iMac
+                        size = 'L';
+                    } else if (screenWidth < 480) {
+                        // 小屏，如手机
+                        size = 'S';
+                    }
+                }
+                // 标记CSS
+                root.className = size;
+                // 标记JS
+                win.SIZE = size;
+            })(document, window);
+
+            if(window.SIZE === 'S'){
+                // 手机端的处理
+                alert('我是手机屏幕')
+            }else {
+                // 桌面端的处理
+                alert('我是桌面端屏幕')
+            }
+            
+    </script>
+</head>
+<body>
+    <div class="d">
+        
+    </div>
+</body>
+</html>
