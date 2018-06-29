@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽移动列表项目，改变顺序</title>
+    <style>
+        body,html{
+            padding: 0;
+            margin: 0;
+        }
+        .d{
+            position: relative;
+        }
+        .d div{
+            padding: 10px;
+        }
+        .hightlight{
+            position: absolute;
+            border: 1px solid #f00;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="d">
+        <div class="dd">1111</div>
+        <div class="dd">2222</div>
+        <div class="dd">3333</div>
+        <div class="dd">4444</div>
+        <div class="dd">5555</div>
+        <div class="hightlight"></div>
+    </div>
+    <script>
+        let divList = Array.from(document.querySelectorAll('.d .dd'));
+        let hightLight = document.getElementsByClassName('hightlight')[0];
+        let parent = document.getElementsByClassName('d')[0];
+        let lastChild = null;
+        let currentChild = null;
+        let needAppendParent = null;
+        function init(){
+            for(item of divList){
+                let bound = item.getBoundingClientRect();
+                item.bound = JSON.parse(JSON.stringify(bound));
+            }
+        }
+        init();
+        document.body.addEventListener('touchstart',function(e){
+            // console.log(e);
+            lastChild = e.target;
+            let lastBound = lastChild.getBoundingClientRect();
+            console.log(lastChild)
+            currentChild = lastChild.cloneNode(true);
+            currentChild.style.cssText = `position:absolute;left:${e.targetTouches[0].pageX}px;top:${e.targetTouches[0].pageY}px;`
+            parent.appendChild(currentChild);
+            hightLight.style.cssText = `display:block;left:${lastBound.left}px;top:${lastBound.top}px;width:${lastBound.width}px;height:${lastBound.height}px;`
+
+        })
+        document.body.addEventListener('touchmove',function(e){
+            // console.log(divList)
+            let currentBound = currentChild.getBoundingClientRect();
+            currentChild.style.cssText = `position:absolute;left:${e.targetTouches[0].pageX}px;top:${e.targetTouches[0].pageY}px;`
+            divList.forEach((item) => {
+                console.log(item)
+                if(currentBound.left > item.bound.left && currentBound.left < item.bound.right && currentBound.top > item.bound.top && currentBound.top < item.bound.bottom){
+                    hightLight.style.cssText = `display:block;left:${item.bound.left}px;top:${item.bound.top}px;width:${lastChild.bound.width}px;height:${lastChild.bound.height}px;`;
+                    needAppendParent = item;
+                }
+            })
+            console.log(needAppendParent)
+        })
+        document.body.addEventListener('touchend',function(e){
+            hightLight.style.cssText = '';
+            parent.removeChild(currentChild);
+            // needAppendParent.appendChild(lastChild)
+            needAppendParent.insertAdjacentElement('afterEnd',lastChild);
+            divList = Array.from(document.querySelectorAll('.d .dd'));
+            console.log(divList)
+        })
+    </script>
+</body>
+</html>

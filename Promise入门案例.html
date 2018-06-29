@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Promise</title>
+</head>
+<body>
+    <script>
+        var nameV = 1;
+        var phoneV = 0;
+        var validateV = 0;
+        function name(resolve,reject){
+            if(nameV){
+                setTimeout(() => {
+                    resolve('用户名验证通过')
+                }, 3000);
+            }else{
+                reject('用户名验证失败')
+            }
+        }
+
+        function phone(resolve,reject){
+            if (phoneV) {
+                setTimeout(() => {
+                    resolve('手机号码验证通过') 
+                }, 2000);
+            } else {
+                reject('手机号码验证失败')
+            }
+        }
+
+        function validate(resolve, reject) {
+            if (validateV) {
+                setTimeout(() => {
+                    resolve('动态验证码验证通过')
+                }, 2000);
+            } else {
+                reject('动态验证码验证失败')
+            }
+        }
+
+        new Promise(name).then((value)=>{
+            console.log(value);
+            return new Promise(phone);
+        }).then((value)=>{
+            console.log(value);
+            return new Promise(validate)
+        }).then((value)=>{
+            console.log(value)
+            console.log('恭喜你！')
+        }).catch((err)=>{
+            console.log(err)
+        })
+    </script>
+</body>
+</html>
